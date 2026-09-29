@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROLEX — Oyster Perpetual Cosmograph Daytona 蠔式恒動宇宙計型迪通拿</title>
+  
+  <!-- Fonts: Cinzel & Inter for luxury typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rolex: {
+              green: '#006039',
+              darkgreen: '#003822',
+              gold: '#C5A059',
+              goldhover: '#D8B46C',
+              dark: '#0B100D',
+              surface: '#121A15',
+              card: '#1A241E',
+              border: '#27382E',
+              champagne: '#FAF8F5'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(1deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.8' },
+            },
+            shimmer: {
+              '100%': { transform: 'translateX(100%)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B100D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27382E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C5A059;
+    }
+
+    /* Scroll Staged Reveal Animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-item.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+
+    /* Parallax smooth performance */
+    .parallax-bg {
+      will-change: transform;
+      transition: transform 0.1s linear;
+    }
+
+    /* Luxury glass panel */
+    .glass-panel {
+      background: rgba(18, 26, 21, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(197, 160, 89, 0.18);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0D0 0%, #C5A059 50%, #9A7B3E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Accordion Expand/Collapse */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .faq-answer.open {
+      max-height: 300px;
+      opacity: 1;
+      transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+    }
+
+    /* Watch Hands Dynamic Sweeping Animations */
+    .hand-second {
+      transform-origin: 200px 200px;
+      animation: sweepSecond 12s linear infinite;
+    }
+    .hand-minute {
+      transform-origin: 200px 200px;
+      animation: sweepMinute 3600s linear infinite;
+    }
+    .hand-hour {
+      transform-origin: 200px 200px;
+      animation: sweepHour 43200s linear infinite;
+    }
+    .sub-hand-1 {
+      transform-origin: 160px 200px;
+      animation: sweepSecond 6s linear infinite;
+    }
+    .sub-hand-2 {
+      transform-origin: 240px 200px;
+      animation: sweepSecond 10s linear infinite;
+    }
+    .sub-hand-3 {
+      transform-origin: 200px 240px;
+      animation: sweepSecond 4s linear infinite;
+    }
+
+    @keyframes sweepSecond {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes sweepMinute {
+      from { transform: rotate(110deg); }
+      to { transform: rotate(470deg); }
+    }
+    @keyframes sweepHour {
+      from { transform: rotate(280deg); }
+      to { transform: rotate(640deg); }
+    }
+
+    /* Watch Dial Glass Glare Shimmer */
+    .watch-glare {
+      animation: glareMove 5s ease-in-out infinite alternate;
+    }
+    @keyframes glareMove {
+      0% { opacity: 0.15; transform: translateY(-10px) rotate(-5deg); }
+      100% { opacity: 0.45; transform: translateY(10px) rotate(5deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item, .animate-float, .parallax-bg {
+        transition: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-rolex-dark text-slate-100 font-sans antialiased selection:bg-rolex-gold selection:text-rolex-dark overflow-x-hidden">
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-rolex-green via-rolex-gold to-yellow-200 z-50 transition-all duration-150 w-0"></div>
+
+  <!-- Header Navigation -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-5">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      <!-- Brand Crown Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <svg class="w-8 h-8 text-rolex-gold transition-transform duration-500 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15 8L20 5L18 13H6L4 5L9 8L12 2ZM6 15H18V17H6V15ZM6 18H18V19H6V18Z"/>
+        </svg>
+        <span class="font-serif tracking-[0.25em] text-lg font-bold text-slate-100 group-hover:text-rolex-gold transition-colors">
+          ROLEX
+        </span>
+      </a>
+
+      <!-- Navigation Anchors -->
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-[0.2em] uppercase text-slate-300">
+        <a href="#hero" class="hover:text-rolex-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rolex-gold hover:after:w-full after:transition-all">總覽</a>
+        <a href="#gallery" class="hover:text-rolex-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rolex-gold hover:after:w-full after:transition-all">材質藝廊</a>
+        <a href="#features" class="hover:text-rolex-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rolex-gold hover:after:w-full after:transition-all">卓越工藝</a>
+        <a href="#specs" class="hover:text-rolex-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rolex-gold hover:after:w-full after:transition-all">技術規格</a>
+        <a href="#faq" class="hover:text-rolex-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rolex-gold hover:after:w-full after:transition-all">尊榮問答</a>
+      </nav>
+
+      <!-- Action & Mobile Toggle -->
+      <div class="flex items-center gap-4">
+        <button onclick="openModal('inquire')" class="hidden sm:inline-flex items-center gap-2 border border-rolex-gold/50 text-rolex-gold hover:bg-rolex-gold hover:text-rolex-dark text-xs font-semibold tracking-widest px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.35)]">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          <span>預約鑑賞</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-slate-200 hover:text-rolex-gold p-2" aria-label="切換選單">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-rolex-border mt-3 px-6 py-6 space-y-4 text-center text-sm font-semibold tracking-widest uppercase">
+      <a href="#hero" class="block py-2 text-slate-200 hover:text-rolex-gold">總覽</a>
+      <a href="#gallery" class="block py-2 text-slate-200 hover:text-rolex-gold">材質藝廊</a>
+      <a href="#features" class="block py-2 text-slate-200 hover:text-rolex-gold">卓越工藝</a>
+      <a href="#specs" class="block py-2 text-slate-200 hover:text-rolex-gold">技術規格</a>
+      <a href="#faq" class="block py-2 text-slate-200 hover:text-rolex-gold">尊榮問答</a>
+      <button onclick="openModal('inquire')" class="w-full mt-2 bg-rolex-gold text-rolex-dark font-bold py-3 rounded-full shadow-lg">預約門市鑑賞</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (100vh) -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,96,57,0.25)_0%,rgba(11,16,13,0.95)_70%)] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rolex-green/10 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+      
+      <!-- Hero Text Content -->
+      <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rolex-green/30 border border-rolex-green/50 text-rolex-gold text-xs font-semibold tracking-widest uppercase shadow-inner">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 賽車運動與奢華時計的傳奇象徵
+        </div>
+        
+        <h1 class="font-serif text-4xl sm:text-6xl xl:text-7xl font-bold tracking-tight text-slate-100 leading-[1.1]">
+          Cosmograph <br>
+          <span class="gold-gradient-text">Daytona</span>
+        </h1>
+        
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+          專為耐力賽車手與追求永恆精準的鑑賞家而打造。採用 18K 永恆玫瑰金，配備傳奇蠔式錶帶與 Cerachrom 陶質字圈。
+        </p>
+
+        <!-- Dual CTA Buttons -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <button onclick="openModal('buy')" class="w-full sm:w-auto relative group overflow-hidden px-8 py-4 bg-gradient-to-r from-rolex-gold via-yellow-500 to-rolex-gold hover:from-yellow-400 hover:to-rolex-gold text-rolex-dark font-extrabold text-xs tracking-[0.2em] uppercase rounded-full shadow-lg shadow-rolex-gold/20 transition-all duration-300 transform hover:-translate-y-0.5">
+            <span class="relative z-10 flex items-center justify-center gap-2">
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+              <span>預約典藏</span>
+            </span>
+            <div class="absolute inset-0 bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+          </button>
+          
+          <a href="#gallery" class="w-full sm:w-auto px-8 py-4 glass-panel border border-rolex-gold/40 hover:border-rolex-gold text-slate-200 hover:text-rolex-gold font-semibold text-xs tracking-[0.2em] uppercase rounded-full text-center transform hover:-translate-y-0.5 transition-all duration-300">
+            賞析材質款式
+          </a>
+        </div>
+
+        <!-- Quick Spec Highlights -->
+        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-rolex-border/60 max-w-md mx-auto lg:mx-0 text-left">
+          <div>
+            <p class="text-[10px] text-slate-500 tracking-wider uppercase font-semibold">機芯型號</p>
+            <p class="text-sm font-serif font-bold text-rolex-gold">4131 恒動機芯</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-slate-500 tracking-wider uppercase font-semibold">動力儲備</p>
+            <p class="text-sm font-serif font-bold text-slate-200">72 小時</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-slate-500 tracking-wider uppercase font-semibold">防水深度</p>
+            <p class="text-sm font-serif font-bold text-slate-200">100米 / 330呎</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Watch Image SVG -->
+      <div id="hero-watch-container" class="lg:col-span-6 flex justify-center items-center relative perspective-1000">
+        <div class="relative w-full max-w-md sm:max-w-lg aspect-square flex items-center justify-center transition-transform duration-200 ease-out" id="interactive-watch-wrapper">
+          <div class="absolute inset-0 border border-rolex-gold/30 rounded-full animate-spin" style="animation-duration: 35s;"></div>
+          <div class="absolute inset-6 border border-dashed border-rolex-green/40 rounded-full"></div>
+          <div class="absolute inset-12 bg-rolex-gold/5 rounded-full blur-2xl animate-pulse-glow"></div>
+          
+          <div class="relative z-10 w-4/5 h-4/5 flex items-center justify-center filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.9)]">
+            <svg id="hero-watch-svg" class="w-full h-full transition-all duration-500" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Case Lugs -->
+              <path class="watch-case-stroke" d="M150 18 L250 18 L240 100 L160 100 Z" fill="url(#heroGoldGrad)" opacity="0.95"/>
+              <path class="watch-case-stroke" d="M150 382 L250 382 L240 300 L160 300 Z" fill="url(#heroGoldGrad)" opacity="0.95"/>
+              
+              <!-- Bezel Outer & Inner Rings -->
+              <circle cx="200" cy="200" r="118" fill="url(#heroGoldGrad)" stroke="#FFE8B2" stroke-width="2"/>
+              <circle cx="200" cy="200" r="104" fill="#090E0B" stroke="#2A382F" stroke-width="5"/>
+              
+              <!-- Bezel Tachymeter Markings (Cerachrom) -->
+              <circle cx="200" cy="200" r="97" stroke="url(#heroGoldGrad)" stroke-width="1.5" stroke-dasharray="2 12"/>
+              
+              <!-- Dial Surface -->
+              <circle cx="200" cy="200" r="88" fill="url(#heroDialGrad)"/>
+              <circle cx="200" cy="200" r="86" stroke="#C5A059" stroke-width="1" stroke-dasharray="1 5"/>
+
+              <!-- Hour Indices -->
+              <g stroke="#C5A059" stroke-width="2.5" stroke-linecap="round">
+                <line x1="200" y1="120" x2="200" y2="127" />
+                <line x1="280" y1="200" x2="273" y2="200" />
+                <line x1="200" y1="280" x2="200" y2="273" />
+                <line x1="120" y1="200" x2="127" y2="200" />
+                <line x1="256" y1="144" x2="251" y2="149" />
+                <line x1="256" y1="256" x2="251" y2="251" />
+                <line x1="144" y1="256" x2="149" y2="251" />
+                <line x1="144" y1="144" x2="149" y2="149" />
+              </g>
+              
+              <!-- Sub-dials with Rotating Sub-Hands -->
+              <!-- Left Sub-dial -->
+              <circle cx="160" cy="200" r="22" fill="#121A15" stroke="#C5A059" stroke-width="1.2"/>
+              <line class="sub-hand-1" x1="160" y1="200" x2="160" y2="183" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="160" cy="200" r="2" fill="#FAF8F5"/>
+
+              <!-- Right Sub-dial -->
+              <circle cx="240" cy="200" r="22" fill="#121A15" stroke="#C5A059" stroke-width="1.2"/>
+              <line class="sub-hand-2" x1="240" y1="200" x2="240" y2="183" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="240" cy="200" r="2" fill="#FAF8F5"/>
+
+              <!-- Bottom Sub-dial -->
+              <circle cx="200" cy="240" r="22" fill="#121A15" stroke="#C5A059" stroke-width="1.2"/>
+              <line class="sub-hand-3" x1="200" y1="240" x2="200" y2="223" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="200" cy="240" r="2" fill="#FAF8F5"/>
+              
+              <!-- Rolex Crown Logo & Text -->
+              <path d="M200 132 L204 142 L211 138 L208 148 H192 L189 138 L196 142 Z" fill="#C5A059"/>
+              <text x="200" y="158" text-anchor="middle" fill="#C5A059" font-size="7.5" font-family="Cinzel" font-weight="bold" letter-spacing="2">ROLEX</text>
+              <text x="200" y="166" text-anchor="middle" fill="#999" font-size="4.5" font-family="sans-serif" letter-spacing="1">OYSTER PERPETUAL</text>
+              <text x="200" y="173" text-anchor="middle" fill="#C5A059" font-size="4" font-family="sans-serif" letter-spacing="1">DAYTONA</text>
+              
+              <!-- Main Animated Watch Hands -->
+              <!-- Hour Hand -->
+              <line class="hand-hour" x1="200" y1="200" x2="200" y2="148" stroke="#FAF8F5" stroke-width="4.5" stroke-linecap="round"/>
+              <!-- Minute Hand -->
+              <line class="hand-minute" x1="200" y1="200" x2="200" y2="128" stroke="#FAF8F5" stroke-width="3" stroke-linecap="round"/>
+              <!-- Chronograph Red/Gold Sweep Second Hand -->
+              <line class="hand-second" x1="200" y1="200" x2="200" y2="114" stroke="#E6B800" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Center Cap -->
+              <circle cx="200" cy="200" r="5.5" fill="#C5A059" stroke="#121A15" stroke-width="1"/>
+
+              <!-- Glass Surface Reflection Overlay -->
+              <path class="watch-glare" d="M120 130 Q 200 80, 280 130 Q 200 170, 120 130 Z" fill="url(#glareGrad)" opacity="0.35"/>
+
+              <defs>
+                <linearGradient id="heroGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop id="grad-stop-1" offset="0%" stop-color="#EAD096"/>
+                  <stop id="grad-stop-2" offset="50%" stop-color="#C5A059"/>
+                  <stop id="grad-stop-3" offset="100%" stop-color="#806227"/>
+                </linearGradient>
+                <radialGradient id="heroDialGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#1A2A20"/>
+                  <stop offset="70%" stop-color="#0B100D"/>
+                  <stop offset="100%" stop-color="#050806"/>
+                </radialGradient>
+                <linearGradient id="glareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#gallery" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-rolex-gold transition-colors group">
+      <span class="text-[10px] tracking-[0.3em] font-semibold uppercase">向下滾動探索</span>
+      <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+    </a>
+  </section>
+
+  <!-- FEATURE A: MATERIAL & VARIANT GALLERY SWITCHER -->
+  <section id="gallery" class="py-24 bg-rolex-surface/80 border-t border-rolex-border/60 relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+      
+      <div class="text-center space-y-3 reveal-item">
+        <span class="text-rolex-gold font-serif text-xs tracking-[0.3em] uppercase font-bold">互動材質切換藝廊</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100">選擇您的經典美學</h2>
+        <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto font-light">
+          點選不同頂級材質款式，即時預覽質感細節與設計特色。
+        </p>
+      </div>
+
+      <!-- Variant Selector Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-3 md:gap-6 reveal-item delay-100">
+        <button onclick="switchVariant('everose')" id="tab-everose" class="variant-tab active px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-rolex-gold bg-rolex-gold text-rolex-dark shadow-lg transition-all duration-300 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[#E0A98B] border border-white/40"></span>
+          <span>18K 永恆玫瑰金</span>
+        </button>
+        <button onclick="switchVariant('yellowgold')" id="tab-yellowgold" class="variant-tab px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-rolex-border glass-panel text-slate-300 hover:border-rolex-gold transition-all duration-300 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[#D4AF37] border border-white/40"></span>
+          <span>18K 黃金</span>
+        </button>
+        <button onclick="switchVariant('oystersteel')" id="tab-oystersteel" class="variant-tab px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-rolex-border glass-panel text-slate-300 hover:border-rolex-gold transition-all duration-300 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[#C0C0C0] border border-white/40"></span>
+          <span>蠔式鋼與 Cerachrom</span>
+        </button>
+      </div>
+
+      <!-- Active Variant Preview Card -->
+      <div class="glass-panel rounded-3xl p-8 md:p-12 border border-rolex-border grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal-item delay-200">
+        <!-- Variant Image Showcase -->
+        <div class="lg:col-span-6 relative flex justify-center items-center">
+          <div class="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden bg-rolex-dark/80 border border-rolex-border/80 p-4 group">
+            <img id="variant-img" src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1000&auto=format&fit=crop" alt="Rolex Daytona Material Variant" class="w-full h-full object-cover rounded-xl transition-all duration-700 filter brightness-95 group-hover:scale-105 group-hover:brightness-100" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1000&auto=format&fit=crop';" />
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-[11px] font-mono text-rolex-gold bg-rolex-dark/90 px-3 py-1.5 rounded-lg border border-rolex-border">
+              <span id="variant-ref-code">REF. 126505</span>
+              <span id="variant-bezel-tag">黑色 Cerachrom 陶質外圈</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variant Info Details -->
+        <div class="lg:col-span-6 space-y-6">
+          <span id="variant-subtitle" class="text-xs font-bold text-rolex-gold tracking-[0.25em] uppercase">奢華永恆玫瑰金款式</span>
+          <h3 id="variant-title" class="font-serif text-3xl font-bold text-slate-100">18K 永恆玫瑰金搭配黑色錶面</h3>
+          <p id="variant-desc" class="text-slate-400 text-sm leading-relaxed font-light">
+            由勞力士獨家鑄造的 18K 永恆玫瑰金，注入鉑金確保色彩永不褪色。與深邃黑色錶面及經典計時盤構成強烈視覺對比，詮釋極致奢華風範。
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-rolex-dark/60 border border-rolex-border/60">
+              <span class="text-[10px] text-slate-500 uppercase tracking-widest block font-semibold">錶帶結構</span>
+              <span id="variant-bracelet" class="text-xs font-semibold text-slate-200 mt-1 block">18K 永恆玫瑰金蠔式錶帶</span>
+            </div>
+            <div class="p-4 rounded-xl bg-rolex-dark/60 border border-rolex-border/60">
+              <span class="text-[10px] text-slate-500 uppercase tracking-widest block font-semibold">鑑賞預估</span>
+              <span id="variant-price" class="text-xs font-semibold text-rolex-gold mt-1 block">專賣店尊榮洽詢</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-4">
+            <button onclick="openModalWithMaterial()" class="px-8 py-3.5 bg-rolex-gold text-rolex-dark font-bold text-xs uppercase tracking-widest rounded-full hover:bg-yellow-400 transition-all shadow-md">
+              預約賞析此款式
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURE B: DYNAMIC COUNTER STATS SECTION -->
+  <section id="stats" class="py-16 bg-rolex-dark border-y border-rolex-border/60">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      
+      <!-- Counter Item 1 -->
+      <div class="space-y-2 reveal-item delay-100">
+        <div class="font-serif text-4xl sm:text-5xl font-extrabold gold-gradient-text flex justify-center items-baseline">
+          <span class="counter" data-target="72">0</span>
+          <span class="text-xl ml-1 text-rolex-gold font-sans font-normal">小時</span>
+        </div>
+        <p class="text-xs text-slate-400 tracking-wider uppercase font-medium">恒動動力儲備</p>
+      </div>
+
+      <!-- Counter Item 2 -->
+      <div class="space-y-2 reveal-item delay-200">
+        <div class="font-serif text-4xl sm:text-5xl font-extrabold text-slate-100 flex justify-center items-baseline">
+          <span class="counter" data-target="100">0</span>
+          <span class="text-xl ml-1 text-slate-400 font-sans font-normal">米</span>
+        </div>
+        <p class="text-xs text-slate-400 tracking-wider uppercase font-medium">防水深度 (330呎)</p>
+      </div>
+
+      <!-- Counter Item 3 -->
+      <div class="space-y-2 reveal-item delay-300">
+        <div class="font-serif text-4xl sm:text-5xl font-extrabold gold-gradient-text flex justify-center items-baseline">
+          <span class="counter" data-target="4131">0</span>
+          <span class="text-sm ml-1 text-rolex-gold font-sans font-normal">型</span>
+        </div>
+        <p class="text-xs text-slate-400 tracking-wider uppercase font-medium">自製精密機芯</p>
+      </div>
+
+      <!-- Counter Item 4 -->
+      <div class="space-y-2 reveal-item delay-400">
+        <div class="font-serif text-4xl sm:text-5xl font-extrabold text-slate-100 flex justify-center items-baseline">
+          <span>±</span><span class="counter" data-target="2">0</span>
+          <span class="text-xl ml-1 text-slate-400 font-sans font-normal">秒/日</span>
+        </div>
+        <p class="text-xs text-slate-400 tracking-wider uppercase font-medium">頂級天文台誤差</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARALLAX BANNER SECTION (60-80vh) -->
+  <section id="banner" class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden border-y border-rolex-border/40">
+    <div id="parallax-bg" class="parallax-bg absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center pointer-events-none filter brightness-50 contrast-125" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1920&auto=format&fit=crop');">
+    </div>
+    
+    <div class="absolute inset-0 bg-gradient-to-t from-rolex-dark via-rolex-dark/60 to-rolex-dark/80"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6 reveal-item">
+      <span class="text-rolex-gold font-serif tracking-[0.3em] text-xs font-semibold uppercase">掌控時間與速度的卓越藝術</span>
+      <h2 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-100 leading-tight">
+        為您的卓越生活 <br>
+        <span class="gold-gradient-text">精雕細琢</span>
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
+        超越高精準度製錶工藝，蘊含不朽的勝利傳奇。Cosmograph Daytona 在頂級運動計時碼錶領域中獨樹一幟。
+      </p>
+      <div class="pt-4">
+        <button onclick="openModal('inquire')" class="inline-flex items-center gap-3 px-7 py-3.5 bg-rolex-dark/80 hover:bg-rolex-green text-slate-100 border border-rolex-gold/40 hover:border-rolex-gold rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 shadow-xl">
+          <span>探索品牌傳奇</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-rolex-gold"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT FEATURES SECTION -->
+  <section id="features" class="py-24 max-w-7xl mx-auto px-6 md:px-12 space-y-32">
+    
+    <div class="text-center space-y-4 max-w-2xl mx-auto reveal-item">
+      <span class="text-rolex-gold font-serif text-xs tracking-[0.3em] uppercase font-bold">無與倫比的卓越</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-100">極致工藝 匠心獨運</h2>
+      <div class="w-12 h-[2px] bg-rolex-gold mx-auto"></div>
+    </div>
+
+    <!-- Feature Module 1: Image Left, Text Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 reveal-item delay-100">
+        <div class="relative group rounded-2xl overflow-hidden glass-panel p-3 border border-rolex-border/80">
+          <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-rolex-surface">
+            <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1000&auto=format&fit=crop" alt="Rolex Bezel Craftsmanship" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100" />
+            <div class="absolute inset-0 bg-gradient-to-t from-rolex-dark/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+              <span class="text-xs font-serif text-rolex-gold tracking-widest uppercase">Cerachrom 獨家技術</span>
+              <span class="text-[10px] text-slate-400 bg-rolex-dark/80 px-2.5 py-1 rounded-full border border-rolex-border">高精準度</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-6 space-y-6 reveal-item delay-200">
+        <span class="text-xs font-bold text-rolex-gold tracking-[0.25em] uppercase">01 / CERACHROM 陶質外圈</span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-100">高科技一體成型 Cerachrom 陶質圈</h3>
+        <p class="text-slate-400 text-sm leading-relaxed font-light">
+          高科技陶質字圈具備極佳的耐用度、抗刮損與防紫外線特性。測速計刻度透過 PVD 鍍膜技術覆上鉑金，呈現極致清晰的閱讀體驗。
+        </p>
+        <ul class="space-y-3 text-xs text-slate-300 font-medium">
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 堅硬抗刮的高密度頂級陶瓷
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 鍍鉑金高清晰測速刻度
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 卓越的耐溫差與抗腐蝕能力
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature Module 2: Text Left, Image Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 order-2 lg:order-1 space-y-6 reveal-item delay-100">
+        <span class="text-xs font-bold text-rolex-gold tracking-[0.25em] uppercase">02 / 恒動機芯</span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-100">4131 型自動上鏈計時機芯</h3>
+        <p class="text-slate-400 text-sm leading-relaxed font-light">
+          完全由 ROLEX 研發並製造的 4131 型機芯，配置 Chronergy 擒縱系統與 Paraflex 緩震裝置，提供極致準確的走時表現與長達 72 小時的動力儲備。
+        </p>
+        <ul class="space-y-3 text-xs text-slate-300 font-medium">
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> Chronergy 擒縱系統提升動力傳輸效率
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 藍色 Parachrom 游絲具備高效抗磁
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 頂級天文台精密時計認證 (每日誤差 ±2 秒內)
+          </li>
+        </ul>
+      </div>
+      <div class="lg:col-span-6 order-1 lg:order-2 reveal-item delay-200">
+        <div class="relative group rounded-2xl overflow-hidden glass-panel p-3 border border-rolex-border/80">
+          <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-rolex-surface">
+            <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1000&auto=format&fit=crop" alt="Rolex Movement Detail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100" />
+            <div class="absolute inset-0 bg-gradient-to-t from-rolex-dark/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+              <span class="text-xs font-serif text-rolex-gold tracking-widest uppercase">精密恒動機芯</span>
+              <span class="text-[10px] text-slate-400 bg-rolex-dark/80 px-2.5 py-1 rounded-full border border-rolex-border">自動上鏈</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Module 3: Image Left, Text Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 reveal-item delay-100">
+        <div class="relative group rounded-2xl overflow-hidden glass-panel p-3 border border-rolex-border/80">
+          <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-rolex-surface">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop" alt="Everose Gold Finish" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100" />
+            <div class="absolute inset-0 bg-gradient-to-t from-rolex-dark/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+              <span class="text-xs font-serif text-rolex-gold tracking-widest uppercase">18K 永恆玫瑰金</span>
+              <span class="text-[10px] text-slate-400 bg-rolex-dark/80 px-2.5 py-1 rounded-full border border-rolex-border">獨家鑄造合金</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-6 space-y-6 reveal-item delay-200">
+        <span class="text-xs font-bold text-rolex-gold tracking-[0.25em] uppercase">03 / 尊貴材質</span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-100">18K 永恆玫瑰金與蠔式錶帶</h3>
+        <p class="text-slate-400 text-sm leading-relaxed font-light">
+          為保持玫瑰金腕錶的璀璨光彩，ROLEX 在自家鑄造廠親自研製並取得專利的 18K 永恆玫瑰金合金，結合堅固的蠔式保險扣。
+        </p>
+        <ul class="space-y-3 text-xs text-slate-300 font-medium">
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 專利表層永不褪色的永恆玫瑰金
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> Easylink 5 毫米易調鏈節延展系統
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-rolex-gold"></span> 折疊蠔式保險扣避免意外開啟
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SPECIFICATIONS GRID -->
+  <section id="specs" class="py-20 bg-rolex-surface/60 border-y border-rolex-border/50">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+      <div class="text-center space-y-3 reveal-item">
+        <span class="text-rolex-gold font-serif text-xs tracking-[0.3em] uppercase font-bold">技術規格</span>
+        <h2 class="font-serif text-3xl font-bold text-slate-100">腕錶詳細規格</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-panel p-6 rounded-2xl border border-rolex-border/60 hover:border-rolex-gold/40 transition-all duration-300 reveal-item delay-100">
+          <i data-lucide="shield" class="w-6 h-6 text-rolex-gold mb-4"></i>
+          <h4 class="font-serif text-base font-bold text-slate-200 mb-1">錶殼結構</h4>
+          <p class="text-xs text-slate-400">蠔式，40 毫米，18K 永恆玫瑰金，配備三扣鎖三重防水系統。</p>
+        </div>
+        <div class="glass-panel p-6 rounded-2xl border border-rolex-border/60 hover:border-rolex-gold/40 transition-all duration-300 reveal-item delay-200">
+          <i data-lucide="disc" class="w-6 h-6 text-rolex-gold mb-4"></i>
+          <h4 class="font-serif text-base font-bold text-slate-200 mb-1">外圈與鏡面</h4>
+          <p class="text-xs text-slate-400">黑色 Cerachrom 陶質一體成型測速計外圈；抗刮損藍寶晶體鏡面。</p>
+        </div>
+        <div class="glass-panel p-6 rounded-2xl border border-rolex-border/60 hover:border-rolex-gold/40 transition-all duration-300 reveal-item delay-300">
+          <i data-lucide="cpu" class="w-6 h-6 text-rolex-gold mb-4"></i>
+          <h4 class="font-serif text-base font-bold text-slate-200 mb-1">機芯機構</h4>
+          <p class="text-xs text-slate-400">ROLEX 4131 型自動上鏈機械計時機芯，雙向自動上鏈恒動擺陀。</p>
+        </div>
+        <div class="glass-panel p-6 rounded-2xl border border-rolex-border/60 hover:border-rolex-gold/40 transition-all duration-300 reveal-item delay-400">
+          <i data-lucide="award" class="w-6 h-6 text-rolex-gold mb-4"></i>
+          <h4 class="font-serif text-base font-bold text-slate-200 mb-1">頂級認證</h4>
+          <p class="text-xs text-slate-400">頂級天文台精密時計認證（瑞士官方認證 + 組裝後認證），全球五年保用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE C: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+  <section id="faq" class="py-24 bg-rolex-dark border-b border-rolex-border/60">
+    <div class="max-w-4xl mx-auto px-6 space-y-12">
+      
+      <div class="text-center space-y-3 reveal-item">
+        <span class="text-rolex-gold font-serif text-xs tracking-[0.3em] uppercase font-bold">常客尊榮問答</span>
+        <h2 class="font-serif text-3xl font-bold text-slate-100">常見問題與服務諮詢</h2>
+        <p class="text-slate-400 text-xs font-light">了解關於勞力士預約賞錶、國際保用與保養建議。</p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-4 reveal-item delay-100">
+        
+        <!-- Question 1 -->
+        <div class="glass-panel rounded-2xl border border-rolex-border overflow-hidden transition-colors duration-300">
+          <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-sm font-semibold text-slate-200 hover:text-rolex-gold transition-colors">如何預約親臨門市鑑賞 Cosmograph Daytona？</span>
+            <i id="faq-icon-1" data-lucide="chevron-down" class="w-4 h-4 text-rolex-gold transition-transform duration-300"></i>
+          </button>
+          <div id="faq-ans-1" class="faq-answer px-6 pb-5 text-xs text-slate-400 font-light leading-relaxed">
+            您可以透過本頁面的「預約鑑賞」表單填寫您的聯絡資訊與偏好的門市地點。送出後，我們的客戶服務顧問將於 24 小時內與您聯繫，確認專屬鑑賞時段與款式細節。
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="glass-panel rounded-2xl border border-rolex-border overflow-hidden transition-colors duration-300">
+          <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-sm font-semibold text-slate-200 hover:text-rolex-gold transition-colors">勞力士腕錶提供幾年的官方品質保用？</span>
+            <i id="faq-icon-2" data-lucide="chevron-down" class="w-4 h-4 text-rolex-gold transition-transform duration-300"></i>
+          </button>
+          <div id="faq-ans-2" class="faq-answer px-6 pb-5 text-xs text-slate-400 font-light leading-relaxed">
+            為確保極致品質，所有全新勞力士腕錶均附有全球 5 年保用（5-Year International Warranty）。此保用證明涵蓋正常使用下的精準度與運作。
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="glass-panel rounded-2xl border border-rolex-border overflow-hidden transition-colors duration-300">
+          <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-sm font-semibold text-slate-200 hover:text-rolex-gold transition-colors">建議的腕錶保養週期為多久？</span>
+            <i id="faq-icon-3" data-lucide="chevron-down" class="w-4 h-4 text-rolex-gold transition-transform duration-300"></i>
+          </button>
+          <div id="faq-ans-3" class="faq-answer px-6 pb-5 text-xs text-slate-400 font-light leading-relaxed">
+            為了確保您的勞力士腕錶始終保持卓越效能與防水性能，建議每 10 年由勞力士授權檢修中心進行一次全面的專業全面檢修。
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="glass-panel rounded-2xl border border-rolex-border overflow-hidden transition-colors duration-300">
+          <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-sm font-semibold text-slate-200 hover:text-rolex-gold transition-colors">18K 永恆玫瑰金與普通玫瑰金有何差別？</span>
+            <i id="faq-icon-4" data-lucide="chevron-down" class="w-4 h-4 text-rolex-gold transition-transform duration-300"></i>
+          </button>
+          <div id="faq-ans-4" class="faq-answer px-6 pb-5 text-xs text-slate-400 font-light leading-relaxed">
+            勞力士於 2005 年研發出專利 18K 永恆玫瑰金（Everose Gold）。它在合金中加入了鉑金成分，防止日常配戴時因環境或化學物質導致色澤變調，確保光彩永恆如初。
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA SECTION WITH MICRO-ANIMATIONS -->
+  <section class="py-24 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,rgba(0,96,57,0.3)_0%,rgba(11,16,13,1)_80%)]">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10 reveal-item">
+      <svg class="w-12 h-12 text-rolex-gold mx-auto opacity-80" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L15 8L20 5L18 13H6L4 5L9 8L12 2ZM6 15H18V17H6V15ZM6 18H18V19H6V18Z"/>
+      </svg>
+      
+      <h2 class="font-serif text-3xl sm:text-5xl font-bold text-slate-100 tracking-tight">
+        典藏您的 <span class="gold-gradient-text">不朽傳奇</span>
+      </h2>
+      
+      <p class="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+        立即預約專屬貴賓尊榮賞錶，或聯繫我們的高級鐘錶顧問以取得個人化訂製諮詢。
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+        <button onclick="openModal('buy')" class="group relative px-10 py-5 bg-gradient-to-r from-rolex-gold via-yellow-500 to-rolex-gold text-rolex-dark font-extrabold text-xs tracking-[0.25em] uppercase rounded-full overflow-hidden shadow-2xl transition-all duration-500 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(197,160,89,0.5)]">
+          <span class="relative z-10 flex items-center gap-3">
+            <span>預約典藏</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+          </span>
+          <div class="absolute inset-0 bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+        </button>
+
+        <button onclick="openModal('inquire')" class="px-8 py-5 glass-panel border border-rolex-gold/40 text-slate-200 hover:text-rolex-gold font-bold text-xs tracking-[0.25em] uppercase rounded-full hover:bg-rolex-green/20 transition-all duration-300 transform hover:scale-105">
+          預約尊榮賞錶
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="bg-rolex-dark border-t border-rolex-border/60 py-16 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-rolex-border/40">
+      
+      <div class="md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-rolex-gold" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15 8L20 5L18 13H6L4 5L9 8L12 2ZM6 15H18V17H6V15ZM6 18H18V19H6V18Z"/>
+          </svg>
+          <span class="font-serif tracking-[0.2em] font-bold text-slate-100 text-sm">ROLEX</span>
+        </div>
+        <p class="text-slate-400 text-xs leading-relaxed font-light">
+          ROLEX 尊榮展示頁面。所有商標與標誌版權均屬瑞士日內瓦 ROLEX 所有。專為奢華展示標準傾心打造。
+        </p>
+      </div>
+
+      <div class="md:col-span-3 space-y-3">
+        <h5 class="font-serif text-slate-200 font-bold uppercase tracking-wider text-xs">快速導覽</h5>
+        <ul class="space-y-2">
+          <li><a href="#hero" class="hover:text-rolex-gold transition-colors">總覽</a></li>
+          <li><a href="#gallery" class="hover:text-rolex-gold transition-colors">材質款式切換</a></li>
+          <li><a href="#features" class="hover:text-rolex-gold transition-colors">卓越工藝</a></li>
+          <li><a href="#specs" class="hover:text-rolex-gold transition-colors">技術規格</a></li>
+          <li><a href="#faq" class="hover:text-rolex-gold transition-colors">常客問答</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-5 space-y-3">
+        <h5 class="font-serif text-slate-200 font-bold uppercase tracking-wider text-xs">關注 ROLEX</h5>
+        <div class="flex items-center gap-4 text-slate-300">
+          <a href="#" class="p-2 glass-panel rounded-full hover:text-rolex-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+          <a href="#" class="p-2 glass-panel rounded-full hover:text-rolex-gold transition-colors" aria-label="Youtube"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+          <a href="#" class="p-2 glass-panel rounded-full hover:text-rolex-gold transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+          <a href="#" class="p-2 glass-panel rounded-full hover:text-rolex-gold transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+      <p>&copy; 2026 ROLEX. 保留所有權利。PROJECT ALPHA 展示頁面規格。</p>
+      <div class="flex gap-6 text-[11px]">
+        <a href="#" class="hover:text-slate-300">隱私權政策</a>
+        <a href="#" class="hover:text-slate-300">服務條款</a>
+        <a href="#" class="hover:text-slate-300">Cookie 設定</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- UPGRADED CUSTOM BOUTIQUE RESERVATION MODAL -->
+  <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div id="modal-card" class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-rolex-gold/30 shadow-2xl transform scale-95 transition-transform duration-300 text-left space-y-5 my-auto">
+      
+      <div class="flex items-center justify-between border-b border-rolex-border/60 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-rolex-green/30 border border-rolex-gold/40 text-rolex-gold flex items-center justify-center">
+            <i id="modal-icon" data-lucide="calendar" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="modal-title" class="font-serif text-lg font-bold text-slate-100">門市尊榮預約賞錶</h3>
+            <p id="modal-subtitle" class="text-[10px] text-slate-400">ROLEX 特約展示旗艦店</p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-rolex-gold p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <p id="modal-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+        請填寫您的基本資訊與偏好的專賣店位置，我們的高級鐘錶顧問將安排一對一VIP鑑賞服務。
+      </p>
+
+      <!-- Detailed Form -->
+      <form id="reservation-form" onsubmit="event.preventDefault(); confirmSubmit();" class="space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[10px] uppercase font-semibold text-slate-400 mb-1">您的姓名 *</label>
+            <input type="text" required placeholder="例如：陳大文" class="w-full px-3.5 py-2.5 bg-rolex-dark/90 border border-rolex-border rounded-lg text-xs text-slate-100 focus:outline-none focus:border-rolex-gold" />
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase font-semibold text-slate-400 mb-1">聯絡電話 *</label>
+            <input type="tel" required placeholder="例如：0912-345-678" class="w-full px-3.5 py-2.5 bg-rolex-dark/90 border border-rolex-border rounded-lg text-xs text-slate-100 focus:outline-none focus:border-rolex-gold" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] uppercase font-semibold text-slate-400 mb-1">電子郵件地址 *</label>
+          <input type="email" required placeholder="name@example.com" class="w-full px-3.5 py-2.5 bg-rolex-dark/90 border border-rolex-border rounded-lg text-xs text-slate-100 focus:outline-none focus:border-rolex-gold" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[10px] uppercase font-semibold text-slate-400 mb-1">預約門市 *</label>
+            <select id="modal-boutique-select" class="w-full px-3.5 py-2.5 bg-rolex-dark/90 border border-rolex-border rounded-lg text-xs text-slate-100 focus:outline-none focus:border-rolex-gold">
+              <option>台北 101 旗艦門市</option>
+              <option>台中 中港特約展示中心</option>
+              <option>高雄 漢神尊榮精品館</option>
+              <option>香港 中環置地廣場旗艦店</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase font-semibold text-slate-400 mb-1">心儀材質款式</label>
+            <select id="modal-material-select" class="w-full px-3.5 py-2.5 bg-rolex-dark/90 border border-rolex-border rounded-lg text-xs text-slate-100 focus:outline-none focus:border-rolex-gold">
+              <option value="everose">18K 永恆玫瑰金</option>
+              <option value="yellowgold">18K 黃金款式</option>
+              <option value="oystersteel">蠔式鋼與 Cerachrom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-3">
+          <button type="button" onclick="closeModal()" class="w-1/3 py-3 border border-rolex-border hover:border-slate-400 text-slate-300 font-bold text-xs uppercase tracking-wider rounded-full transition-colors text-center">
+            取消
+          </button>
+          <button type="submit" class="w-2/3 py-3 bg-gradient-to-r from-rolex-gold to-yellow-500 text-rolex-dark font-extrabold text-xs uppercase tracking-wider rounded-full hover:from-yellow-400 hover:to-rolex-gold transition-colors shadow-lg text-center">
+            確認送出預約
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation Feedback Box (Hidden initially) -->
+      <div id="modal-success-box" class="hidden text-center py-6 space-y-3">
+        <div class="w-12 h-12 rounded-full bg-rolex-green text-rolex-gold flex items-center justify-center mx-auto border border-rolex-gold">
+          <i data-lucide="check" class="w-6 h-6"></i>
+        </div>
+        <h4 class="font-serif text-lg font-bold text-slate-100">預約需求已成功送出</h4>
+        <p class="text-xs text-slate-300 leading-relaxed max-w-xs mx-auto">
+          感謝您的預約。我們的尊榮顧問將於 24 小時內與您電話確認賞錶時段。
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Material Switcher Data & State Management
+    const variantsData = {
+      everose: {
+        ref: "REF. 126505",
+        subtitle: "奢華永恆玫瑰金款式",
+        title: "18K 永恆玫瑰金搭配黑色錶面",
+        desc: "由勞力士獨家鑄造的 18K 永恆玫瑰金，注入鉑金確保色彩永不褪色。與深邃黑色錶面及經典計時盤構成強烈視覺對比，詮釋極致奢華風範。",
+        bracelet: "18K 永恆玫瑰金蠔式錶帶",
+        bezel: "18K 永恆玫瑰金外圈",
+        img: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=1000&auto=format&fit=crop",
+        gradStops: ["#EAD096", "#C5A059", "#806227"]
+      },
+      yellowgold: {
+        ref: "REF. 126508",
+        subtitle: "經典黃金耀眼款式",
+        title: "18K 黃金搭配經典金色計時圈",
+        desc: "傳承勞力士最純正的黃金鑄造工藝，陽光放射紋錶面在不同光線折射下呈現動能之美，為賽車計時碼錶增添不凡高貴氣勢。",
+        bracelet: "18K 黃金蠔式三排鏈節錶帶",
+        bezel: "18K 黃金測速計外圈",
+        img: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1000&auto=format&fit=crop",
+        gradStops: ["#FFE58F", "#D4AF37", "#8A6D0B"]
+      },
+      oystersteel: {
+        ref: "REF. 126500LN",
+        subtitle: "堅固極致專業鋼款",
+        title: "蠔式鋼搭配 Cerachrom 黑色陶質圈",
+        desc: "採用高抗腐蝕的 904L 蠔式鋼打造，結合高科技黑色 Cerachrom 陶質測速字圈。耐磨抗刮，完美的運動美學與強悍性能代表作。",
+        bracelet: "904L 蠔式鋼保險扣錶帶",
+        bezel: "黑色 Cerachrom 陶質外圈",
+        img: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1000&auto=format&fit=crop",
+        gradStops: ["#E5E7EB", "#9CA3AF", "#4B5563"]
+      }
+    };
+
+    let currentSelectedMaterial = 'everose';
+
+    function switchVariant(key) {
+      const data = variantsData[key];
+      if (!data) return;
+      currentSelectedMaterial = key;
+
+      // Update Tabs styling
+      document.querySelectorAll('.variant-tab').forEach(tab => {
+        tab.classList.remove('active', 'bg-rolex-gold', 'text-rolex-dark', 'border-rolex-gold', 'shadow-lg');
+        tab.classList.add('glass-panel', 'text-slate-300', 'border-rolex-border');
+      });
+
+      const activeTab = document.getElementById(`tab-${key}`);
+      if (activeTab) {
+        activeTab.classList.add('active', 'bg-rolex-gold', 'text-rolex-dark', 'border-rolex-gold', 'shadow-lg');
+        activeTab.classList.remove('glass-panel', 'text-slate-300', 'border-rolex-border');
+      }
+
+      // Update Content Info
+      document.getElementById('variant-ref-code').textContent = data.ref;
+      document.getElementById('variant-bezel-tag').textContent = data.bezel;
+      document.getElementById('variant-subtitle').textContent = data.subtitle;
+      document.getElementById('variant-title').textContent = data.title;
+      document.getElementById('variant-desc').textContent = data.desc;
+      document.getElementById('variant-bracelet').textContent = data.bracelet;
+      document.getElementById('variant-img').src = data.img;
+
+      // Dynamic update watch SVG color scheme
+      const stop1 = document.getElementById('grad-stop-1');
+      const stop2 = document.getElementById('grad-stop-2');
+      const stop3 = document.getElementById('grad-stop-3');
+      if (stop1 && stop2 && stop3) {
+        stop1.setAttribute('stop-color', data.gradStops[0]);
+        stop2.setAttribute('stop-color', data.gradStops[1]);
+        stop3.setAttribute('stop-color', data.gradStops[2]);
+      }
+    }
+
+    function toggleFaq(index) {
+      const ans = document.getElementById(`faq-ans-${index}`);
+      const icon = document.getElementById(`faq-icon-${index}`);
+      if (!ans) return;
+
+      const isOpen = ans.classList.contains('open');
+      
+      // Close all accordions first for clean interaction
+      document.querySelectorAll('.faq-answer').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('[id^="faq-icon-"]').forEach(ic => ic.style.transform = 'rotate(0deg)');
+
+      if (!isOpen) {
+        ans.classList.add('open');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // 2. Scroll Progress Bar & Dynamic Header Transparency
+    const progressBar = document.getElementById('scroll-progress');
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      
+      if (progressBar) {
+        progressBar.style.width = `${progress}%`;
+      }
+
+      if (scrollTop > 50) {
+        navbar.classList.add('glass-panel', 'py-3', 'shadow-2xl');
+        navbar.classList.remove('py-5');
+      } else {
+        navbar.classList.remove('glass-panel', 'py-3', 'shadow-2xl');
+        navbar.classList.add('py-5');
+      }
+    });
+
+    // 3. Parallax Background Animation
+    const parallaxBg = document.getElementById('parallax-bg');
+    let ticking = false;
+
+    function updateParallax() {
+      if (parallaxBg) {
+        const bannerSection = document.getElementById('banner');
+        const rect = bannerSection.getBoundingClientRect();
+        
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const speed = 0.25;
+          const yPos = (rect.top) * speed;
+          parallaxBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        }
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+
+    // 4. Staggered Scroll Reveal & Dynamic Animated Counters Observer
+    const revealItems = document.querySelectorAll('.reveal-item');
+    const counters = document.querySelectorAll('.counter');
+    let countersStarted = false;
+
+    function startCounters() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 1800; // 1.8s
+        const stepTime = 20;
+        const steps = duration / stepTime;
+        const increment = target / steps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            counter.textContent = target;
+            clearInterval(timer);
+          } else {
+            counter.textContent = Math.ceil(current);
+          }
+        }, stepTime);
+      });
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          
+          // Trigger counter start when stats section is revealed
+          if (entry.target.id === 'stats' || entry.target.contains(document.querySelector('.counter'))) {
+            if (!countersStarted) {
+              startCounters();
+              countersStarted = true;
+            }
+          }
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    // 5. Mobile Navigation Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileBtn?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+      });
+    });
+
+    // 6. Interactive Modal Management
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalCard = document.getElementById('modal-card');
+    const modalForm = document.getElementById('reservation-form');
+    const modalSuccessBox = document.getElementById('modal-success-box');
+    const modalMaterialSelect = document.getElementById('modal-material-select');
+
+    function openModal(type) {
+      if (modalForm) modalForm.classList.remove('hidden');
+      if (modalSuccessBox) modalSuccessBox.classList.add('hidden');
+
+      if (modalMaterialSelect) {
+        modalMaterialSelect.value = currentSelectedMaterial;
+      }
+
+      modalBackdrop.classList.remove('pointer-events-none', 'opacity-0');
+      modalBackdrop.classList.add('opacity-100');
+      modalCard.classList.remove('scale-95');
+      modalCard.classList.add('scale-100');
+    }
+
+    function openModalWithMaterial() {
+      openModal('inquire');
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      modalBackdrop.classList.remove('opacity-100');
+      modalCard.classList.add('scale-95');
+      modalCard.classList.remove('scale-100');
+    }
+
+    function confirmSubmit() {
+      if (modalForm) modalForm.classList.add('hidden');
+      if (modalSuccessBox) modalSuccessBox.classList.remove('hidden');
+      
+      setTimeout(() => {
+        closeModal();
+      }, 2500);
+    }
+
+    modalBackdrop?.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    // 7. Interactive 3D Gyro Mouse Movement on Hero Watch
+    const watchContainer = document.getElementById('hero-watch-container');
+    const watchWrapper = document.getElementById('interactive-watch-wrapper');
+
+    if (watchContainer && watchWrapper) {
+      watchContainer.addEventListener('mousemove', (e) => {
+        const rect = watchContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / rect.height) * 20; // max 20 deg
+        const rotateY = (x / rect.width) * 20;
+
+        watchWrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      });
+
+      watchContainer.addEventListener('mouseleave', () => {
+        watchWrapper.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+      });
+    }
+  </script>
+</body>
+</html>
